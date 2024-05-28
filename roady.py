@@ -12,7 +12,6 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = os.getenv("CHANNEL_ID").strip()
 bot = discord.Client(intents=intents)
 
-print(f"Loaded DISCORD_TOKEN: {DISCORD_TOKEN[:10]}. . .")
 print(f"Loaded Channel_ID: {CHANNEL_ID}")
 
 @bot.event
@@ -28,11 +27,8 @@ async def on_ready():
 
     print("Roady is in " + str(guild_count) + " guilds.")
 
-    for guild in bot.guilds:
-        print(f"Guild: {guild.name} (ID: {guild.id})")
-        for channel in guild.channels:
-            print(f"  Channel: {channel.name} (ID: {channel.id}, Type: {channel.type})")
-
+#Test to see if bot respond(This can be removed later)
+'''
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -41,6 +37,7 @@ async def on_message(message):
 
     if message.content == "hello":
         await message.channel.send("hey dirtbag")
+'''
 
 @bot.event
 async def on_member_join(member):
@@ -50,7 +47,7 @@ async def on_member_join(member):
     channel = bot.get_channel(int(CHANNEL_ID))
     if channel:
         print(f"Channel found: {channel.name} (ID: {channel.id}), sending message.")
-        await channel.send("LEAVE NOW COMMIE!")
+        await channel.send(f"Hi {member.name}, I'm Roady, the CSC discord bot. If you wouldn't mind taking some time to click this link and join through the join section.\n\nPrescence link: https://daltonstate.presence.io/organization/computer-science-club \n\nAfter that you will be an official member of the Computer Science Club! Thank You!")
     
     else:
         print("channel not found. Checking available channels.")
