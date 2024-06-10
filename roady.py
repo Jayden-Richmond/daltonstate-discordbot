@@ -36,7 +36,7 @@ async def on_message(message):
 
 
     if message.content == "hello":
-        await message.channel.send("hey dirtbag")
+        await message.channel.send("hello")
 '''
 
 @bot.event
